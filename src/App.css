@@ -1,33 +1,37 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,500,700,800,900&display=swap');
+
 .App {
-  text-align: center;
+  font-family: "Montserrat";
+  height: calc(100vh - 2em);
+  width: calc(100vw - 2em);
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: repeat(9, 1fr);
+  grid-gap: 1em;
+
+  /* Grid Layout */
+  /*   (h)eader */
+  /*   (t)ime & weather */
+  /*   (m)ap */
+  /*   (b)uses */
+  /*   (l)egend */
+  /*   (o)ther */
+  /* mo(g)o    */
+  grid-template-areas:
+    "h h h h h h b b b b b b"
+    "h h h h h h b b b b b b"
+    "h h h h h h b b b b b b"
+    "h h h h h h b b b b b b"
+    "h h h h h h b b b b b b"
+    "o o o o o o b b b b b b"
+    "o o o o o o b b b b b b"
+    "o o o o o o b b b b b b"
+    "o o o o o o t t t t t t";
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
-  pointer-events: none;
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+h1, h2, h3 {
+  margin-top: 0;
+  font-family: 'Montserrat';
+  font-weight: 900;
+  border-bottom: 5px solid#FBB63B;
 }

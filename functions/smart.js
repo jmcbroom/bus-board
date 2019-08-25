@@ -8,7 +8,11 @@ exports.handler = function(event, context, callback) {
     .then(body => {
       callback(null, {
         statusCode: 200,
-        body
+        body: body,
+        headers: {
+          'Content-Type': 'application/json',
+          'Access-Control-Allow-Origin': '*'
+        }
       })
     })
 }
