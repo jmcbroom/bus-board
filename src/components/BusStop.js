@@ -1,13 +1,13 @@
-import React, { useState, useEffect } from 'react';
-import _ from 'lodash';
+import React, { useState, useEffect } from "react";
+import _ from "lodash";
 import { Header, Label, Image, Segment, Transition } from "semantic-ui-react";
-import dayjs from 'dayjs';
-import PanelHeader from './PanelHeader';
+import dayjs from "dayjs";
+import PanelHeader from "./PanelHeader";
 
 let ddotDirections = {
-  "Larned": {
-    "stops": ["DDOT_5247", "DDOT_5249", "DDOT_9694"],
-    "routes": {
+  Larned: {
+    stops: ["DDOT_5247", "DDOT_5249", "DDOT_9694"],
+    routes: {
       3: "Eastbound to Beaubien & Jefferson",
       4: "Northbound to State Fair",
       5: "Northbound to E 8 Mile & Federal Ave",
@@ -21,9 +21,9 @@ let ddotDirections = {
       96: "Eastbound to St Antoine & Larned"
     }
   },
-  "Jefferson": {
-    "stops": ["DDOT_969", "DDOT_223", "DDOT_9956"],
-    "routes": {
+  Jefferson: {
+    stops: ["DDOT_969", "DDOT_223", "DDOT_9956"],
+    routes: {
       3: "Westbound to Grandview & Grand River",
       6: "Southbound to Third & Michigan",
       9: "Westbound to Rosa Parks Transit Center",
@@ -51,17 +51,17 @@ const processSmart = c => {
   };
 };
 
-const processDdot = (c) => {
+const processDdot = c => {
   let time = c.predictedArrivalTime > 0 ? c.predictedArrivalTime : c.scheduledArrivalTime;
   let formattedTime = dayjs(time).format("h:mm");
 
   // route direction lookup
-  let direction = '';
+  let direction = "";
   let stops = ["Larned", "Jefferson"];
   for (let s of stops) {
     for (let sid of ddotDirections[s].stops) {
       if (sid === c.stopId) {
-        direction = ddotDirections[s].routes[Number(c.routeShortName)]
+        direction = ddotDirections[s].routes[Number(c.routeShortName)];
         direction = direction.toUpperCase().split(" TO ");
       }
     }
@@ -80,7 +80,6 @@ const processDdot = (c) => {
 };
 
 const BusStop = ({ busStop }) => {
-
   // set up a tick for our real-time data refresh
   const [tick, setTick] = useState(new Date());
   useEffect(() => {
@@ -89,7 +88,7 @@ const BusStop = ({ busStop }) => {
     }, 120000);
     return () => clearInterval(tick);
   }, []);
-  
+
   // set up ddot
   const [ddot, setDdot] = useState([]);
   useEffect(() => {
@@ -98,7 +97,7 @@ const BusStop = ({ busStop }) => {
     Promise.all(urls.map(u => fetch(u)))
       .then(responses => Promise.all(responses.map(res => res.json())))
       .then(predictions => {
-        console.log(predictions)
+        console.log(predictions);
         setDdot(
           _.flatten(predictions.map(s => s.data.entry.arrivalsAndDepartures))
             .map(t => processDdot(t))
@@ -114,8 +113,10 @@ const BusStop = ({ busStop }) => {
     Promise.all(urls.map(u => fetch(u)))
       .then(responses => Promise.all(responses.map(res => res.json())))
       .then(predictions => {
+        console.log(predictions);
+        let filtered = predictions.filter(p => Object.keys(p["bustime-response"]).indexOf("prd") > -1);
         setSmart(
-          _.flatten(predictions.map(s => s["bustime-response"].prd))
+          _.flatten(filtered.map(s => s["bustime-response"].prd))
             .map(t => processSmart(t))
             .sort((a, b) => a.arrivalTime - b.arrivalTime)
         );
@@ -124,9 +125,9 @@ const BusStop = ({ busStop }) => {
 
   let grouped = _.groupBy(ddot.concat(smart), t => t.routeName);
   let routes = Object.keys(grouped).filter(r => busStop.exclude.indexOf(r) === -1);
-  
+
   // only show departure times for routes that layover at one of these stops
-  let layoverRoutes = ['DEXTER', 'WOODWARD'];
+  let layoverRoutes = ["DEXTER", "WOODWARD"];
   for (let l of layoverRoutes) {
     if (l in grouped) {
       let departuresOnly = _.filter(grouped[l], function(o) {
@@ -138,7 +139,7 @@ const BusStop = ({ busStop }) => {
   }
 
   // only show one departure time for routes that stops at more than one stops along street
-  let doubleStops = ['JEFFERSON'];
+  let doubleStops = ["JEFFERSON"];
   for (let d of doubleStops) {
     if (d in grouped) {
       let oneStopOnly = _.uniqBy(grouped[d], function(e) {
@@ -150,7 +151,7 @@ const BusStop = ({ busStop }) => {
   }
 
   return (
-    <div style={{fontFamily: 'Inter'}}>
+    <div style={{ fontFamily: "Lato" }}>
       <PanelHeader title={busStop.title} />
       <Transition.Group as={Segment.Group} duration={500}>
         {/* <Segment.Group> */}
@@ -224,7 +225,7 @@ const BusStop = ({ busStop }) => {
             })}
       </Transition.Group>
     </div>
-  )
-}
+  );
+};
 
 export default BusStop;

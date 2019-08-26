@@ -1,13 +1,15 @@
-@import url('https://fonts.googleapis.com/css?family=Montserrat:400,500,700,800,900&display=swap');
+@import url("https://fonts.googleapis.com/css?family=Montserrat:400,500,700,800,900&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Lato:400,700,900&display=swap");
 
 .App {
+  padding: 1rem;
   font-family: "Montserrat";
-  height: calc(100vh - 2em);
-  width: calc(100vw - 2em);
+  height: 100vh;
+  width: 100vw;
   display: grid;
   grid-template-columns: repeat(12, 1fr);
   grid-template-rows: repeat(9, 1fr);
-  grid-gap: 1em;
+  grid-gap: 1rem;
 
   /* Grid Layout */
   /*   (h)eader */
@@ -23,15 +25,17 @@
     "h h h h h h b b b b b b"
     "h h h h h h b b b b b b"
     "h h h h h h b b b b b b"
-    "o o o o o o b b b b b b"
+    "h h h h h h b b b b b b"
     "o o o o o o b b b b b b"
     "o o o o o o b b b b b b"
     "o o o o o o t t t t t t";
 }
 
-h1, h2, h3 {
+h1,
+h2,
+h3 {
   margin-top: 0;
-  font-family: 'Montserrat';
+  font-family: "Montserrat";
   font-weight: 900;
   border-bottom: 5px solid#FBB63B;
 }

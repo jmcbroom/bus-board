@@ -29,18 +29,13 @@ const MoGo = props => {
     fetch(url)
       .then(r => r.json())
       .then(d => {
+        console;
         setBikeInfo(d.data.stations);
       });
   }, [now]);
 
   return (
-    <div
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        alignContent: "flex-start"
-      }}
-    >
+    <div>
       <PanelHeader title={`MoGo Bikeshare`} />
       <Segment.Group>
         {props.stations.map(s => {
@@ -49,11 +44,11 @@ const MoGo = props => {
           return (
             info &&
             bikes && (
-              <Segment key={s} style={{padding: 10}}>
-                <Header as='h3' content={info.name} />
-                <div style={{ display: "flex", flexDirection: "row", alignItems: "center", justifyContent: "space-between" }}>
+              <Segment key={s} style={{ padding: 10 }}>
+                <Header as="h3" content={info.name} />
+                <div style={{ display: "flex", flexDirection: "row", alignItems: "center", justifyContent: "space-between", fontFamily: "Lato" }}>
                   <div>
-                    <Label size="big" color="red" content={`${bikes.num_bikes_available} bikes`} />
+                    <Label size="big" color="red" style={{ color: "black" }} content={`${bikes.num_bikes_available} bikes`} />
                     <Label size="big" color="grey" content={`${bikes.num_docks_available} docks`} />
                   </div>
                 </div>
