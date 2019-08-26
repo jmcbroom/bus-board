@@ -41,15 +41,17 @@ const MoGo = props => {
         {props.stations.map(s => {
           let info = stationInfo.filter(i => parseInt(i.station_id) === s)[0];
           let bikes = bikeInfo.filter(i => i.station_id === s.toString())[0];
+          console.log(bikes)
           return (
             info &&
             bikes && (
-              <Segment key={s} style={{ padding: 10 }}>
+              <Segment key={s}>
                 <Header as="h3" content={info.name} />
                 <div style={{ display: "flex", flexDirection: "row", alignItems: "center", justifyContent: "space-between", fontFamily: "Lato" }}>
                   <div>
-                    <Label size="big" color="red" style={{ color: "black" }} content={`${bikes.num_bikes_available} bikes`} />
-                    <Label size="big" color="grey" content={`${bikes.num_docks_available} docks`} />
+                    <Label size="big" color="yellow" icon={`lightning`} style={{ color: "black" }} content={`${bikes.num_bikes_available_types.ebike} e-bikes`} />
+                    <Label size="big" color="red" icon={`bicycle`} style={{ color: "black" }} content={`${bikes.num_bikes_available_types.mechanical} bikes`} />
+                    <Label size="big" color="grey" content={`${bikes.num_docks_available} open docks`} />
                   </div>
                 </div>
               </Segment>

@@ -162,7 +162,7 @@ const BusStop = ({ busStop }) => {
             .map(r => {
               let sample = grouped[r][0];
               return (
-                <Segment size="large" key={r}>
+                <Segment size="regular" key={r}>
                   <div style={{ display: "flex", justifyContent: "space-between" }}>
                     <div>
                       <Label

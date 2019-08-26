@@ -1,8 +1,9 @@
 let rp = require('request-promise')
 
 exports.handler = function(event, context, callback) {
-  console.log(`Getting times for SMART bus stop ${event.queryStringParameters.stopId}`);
-  let url = `http://bustime.smartbus.org/bustime/api/v2/getpredictions?key=${process.env.SMART_KEY}&format=json&stpid=${event.queryStringParameters.stopId}`
+  console.log(`Getting weather for coordinates ${event.queryStringParameters.lon}, ${event.queryStringParameters.lat}`);
+
+  let url = `https://api.darksky.net/forecast/${process.env.DARKSKY_KEY}/${event.queryStringParameters.lat},${event.queryStringParameters.lon}`;
 
   rp(url)
     .then(body => {

@@ -9,12 +9,40 @@ import BusPanel from "./components/BusPanel";
 import OtherPanel from "./components/OtherPanel";
 import TimePanel from "./components/TimePanel";
 
+// configuration object for the whole app
 let config = {
+  // the title of the screen
+  title: `COLEMAN A. YOUNG MUNICIPAL CENTER`,
+  // the coordinates to center on
   coords: [-83.0453376, 42.329009],
-  mogo: []
+  // MoGo station IDs to highlight
+  mogoStations: [12, 15, 18],
+  // An array of bus stop panels
+  busStops: [
+    {
+      // title of the panel
+      title: "Larned Buses",
+      // arrays of bus stop IDs for each provider
+      stops: {
+        smart: [23822],
+        ddot: [5247, 5249, 9694]
+      },
+      // don't show routes with these names here (maybe it's the end of the route)
+      exclude: ["GRAND RIVER", "FAST WOODWARD", "FAST MICHIGAN"]
+    },  
+    {
+      title: "Jefferson Buses",
+      stops: {
+        smart: [23823],
+        ddot: [969, 223, 9956]
+      },
+      exclude: []
+    },
+  ]
 };
 
 const App = () => {
+
   // set up scooters here
   const [scooters, setScooters] = useState({});
   useEffect(() => {
@@ -39,10 +67,19 @@ const App = () => {
 
   return (
     <div className="App">
-      <HerePanel center={config.coords} scooters={scooters} />
-      <BusPanel />
-      <OtherPanel center={config.coords} scooters={scooters} />
-      <TimePanel />
+
+      {/* The map and title */}
+      <HerePanel center={config.coords} title={config.title}  scooters={scooters} />
+
+      {/* Buses */}
+      <BusPanel busStops={config.busStops} />
+
+      {/* MoGo & scooters */}
+      <OtherPanel center={config.coords} mogoStations={config.mogoStations} scooters={scooters}  />
+
+      {/* Time & weather */}
+      <TimePanel center={config.coords} />
+
     </div>
   );
 };

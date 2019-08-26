@@ -62,7 +62,7 @@ const Map = ({ scooters, center }) => {
     console.log(scooters);
   }, [scooters]);
 
-  return <div id="map" style={{ height: "calc(57.5vh)" }} />;
+  return <div id="map" style={{ height: "calc(50.5vh)" }} />;
 };
 
 export default Map;
