@@ -1,38 +1,76 @@
-.App {
-  text-align: center;
-}
+@import url("https://fonts.googleapis.com/css?family=Inter:200,300,400,500,600,700,800,900&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Montserrat:300,400,500,700,800,900&display=swap");
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
+/* ./src/index.css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.config-label {
+  @apply py-2;
+  @apply items-center;
+  @apply justify-between;
   display: flex;
-  flex-direction: column;
+}
+
+.config-label input {
+  @apply mx-2;
+}
+
+.detroit-title {
+  font-family  : "Montserrat", sans-serif;
+  font-weight  : 900;
+  border-bottom: 5px solid rgb(254, 183, 13);
+}
+
+.App {
+  font-family: "Inter";
+  height: 100vh;
+  max-height: 1080;
+  max-width: 1920;
+  width: 100vw;
+  display: grid;
+  padding: 1.5em;
+  grid-gap: 1.5rem;
+  grid-template-columns: 20vw repeat(11, 1fr);
+  grid-template-rows: 45px repeat(14, 1fr);
+
+  /* Grid Layout */
+  /*   (h)eader */
+  /*   (t)ime & weather */
+  /*   (m)ap */
+  /*   (b)uses */
+  /*   (l)egend */
+  /*   (o)ther */
+  /* mo(g)o    */
+  grid-template-areas:
+    "l h h h h h h b b b b b"
+    "l h h h h h h b b b b b"
+    "l h h h h h h b b b b b"
+    "l h h h h h h b b b b b"
+    "l h h h h h h b b b b b"
+    "l h h h h h h b b b b b"
+    "l h h h h h h b b b b b"
+    "l h h h h h h b b b b b"
+    "l h h h h h h b b b b b"
+    "l h h h h h h b b b b b"
+    "l o o o o o o b b b b b"
+    "l o o o o o o b b b b b"
+    "l o o o o o o b b b b b"
+    "l o o o o o o b b b b b"
+    "l o o o o o o b b b b b";
+}
+
+.route-number {
+  @apply text-white;
+  @apply font-bold;
+  @apply h-8;
+  display: flex;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  justify-content: space-around;
 }
 
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.mapbox-improve-map, .mapboxgl-ctrl-attrib-inner, .mapboxgl-ctrl-logo {
+  display: none;
 }

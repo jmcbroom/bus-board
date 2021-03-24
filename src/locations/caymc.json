@@ -1,0 +1,85 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "id": "main",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.0450862,
+          42.3301447
+        ]
+      },
+      "properties": {
+        "short": "CAYMC",
+        "long": "Coleman A. Young Municipal Center",
+        "zoom": 16.5,
+        "bearing": -29.5,
+        "center": [-83.0450862, 42.3301447],
+        "mogo": [12, 18, 19]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "you-are-here",
+      "geometry": { "type": "Point", "coordinates": [-83.044545, 42.329278] }
+    },
+    {
+      "type": "Feature",
+      "id": "bus-stop-spirit-plaza-larned",
+      "geometry": { "type": "Point", "coordinates": [-83.045165, 42.329363] },
+      "properties": {
+        "title": "Spirit Plaza: Larned",
+        "smart": [23822],
+        "ddot": [5247, 5249],
+        "exclude": [3],
+        "anchor": "right",
+        "justify": "right",
+        "offset": [-1.1, 0]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "bus-stop-woodward-larned",
+      "geometry": { "type": "Point", "coordinates": [-83.045322, 42.330039] },
+      "properties": {
+        "title": "Woodward & Larned",
+        "smart": [],
+        "ddot": [10431],
+        "exclude": [],
+        "anchor": "bottom",
+        "justify": "center",
+        "offset": [0, -1.1]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "bus-stop-spirit-plaza-jefferson",
+      "geometry": { "type": "Point", "coordinates": [-83.044342, 42.329016] },
+      "properties": {
+        "title": "Spirit Plaza: Jefferson",
+        "smart": [22149, 23945],
+        "ddot": [1132, 9956],
+        "exclude": [9, 6, 40],
+        "anchor": "left",
+        "justify": "left",
+        "offset": [1.1, 0]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "bus-stop-jefferson-shelby",
+      "geometry": { "type": "Point", "coordinates": [-83.046709, 42.328018] },
+      "properties": {
+        "title": "Jefferson & Shelby",
+        "smart": [],
+        "ddot": [223],
+        "exclude": [9, 3, 40, 6],
+        "anchor": "left",
+        "justify": "left",
+        "offset": [1.1, 0]
+      }
+    }
+  ]
+}

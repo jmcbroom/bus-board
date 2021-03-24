@@ -1,24 +1,27 @@
-import logo from './logo.svg';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import './App.css';
+import BusBoard from './BusBoard';
+import Configure from './Configure';
+import React, {useState} from 'react';
+import caymc from './locations/caymc.json'
 
 function App() {
+
+  const [locationOptions, setLocationOptions] = useState(caymc.features[0].properties)
+  const [stops, setStops] = useState(caymc.features.filter(f => f.id.indexOf('bus-stop') > -1))
+  const [features, setFeatures] = useState(caymc.features.filter(f => f.id.indexOf('bus-stop') === -1))
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Switch>
+        <Route path="/configure">
+          <Configure {...{locationOptions, setLocationOptions, stops, setStops}}/>
+        </Route>
+        <Route path="/">
+          <BusBoard {...{locationOptions, stops, features}} />
+        </Route>
+      </Switch>
+    </Router>
   );
 }
 
