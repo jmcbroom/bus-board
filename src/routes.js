@@ -36,8 +36,8 @@ const routes = {
   },
   6: {
     title: "Gratiot",
-    north: "",
-    south: "",
+    north: "8 Mile",
+    south: "3rd and Abbott",
     east: "",
     west: ""
   },
@@ -189,9 +189,9 @@ const routes = {
     west: ""
   },
   40: {
-    title: "",
-    north: "",
-    south: "",
+    title: "Russell",
+    north: "8 Mile",
+    south: "downtown Detroit",
     east: "",
     west: ""
   },
@@ -231,9 +231,9 @@ const routes = {
     west: ""
   },
   52: {
-    title: "",
-    north: "",
-    south: "",
+    title: "Chene",
+    north: "Nevada and Van Dyke",
+    south: "Rosa Parks TC",
     east: "",
     west: ""
   },
@@ -252,11 +252,11 @@ const routes = {
     west: ""
   },
   67: {
-    title: "",
+    title: "Cadillac/Harper",
     north: "",
     south: "",
-    east: "",
-    west: ""
+    east: "Moross and Mack",
+    west: "Rosa Parks TC"
   },
   68: {
     title: "",
@@ -343,11 +343,11 @@ const routes = {
     west: ""
   },
   261: {
-    title: "",
+    title: "FAST Michigan",
     north: "",
     south: "",
-    east: "",
-    west: ""
+    east: "downtown Detroit",
+    west: "Metro Airport/DTW"
   },
   275: {
     title: "",
@@ -476,9 +476,9 @@ const routes = {
     west: ""
   },
   563: {
-    title: "",
-    north: "",
-    south: "",
+    title: "FAST Gratiot",
+    north: "23 Mile Rd",
+    south: "downtown Detroit",
     east: "",
     west: ""
   },
