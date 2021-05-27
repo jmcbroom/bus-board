@@ -1,4 +1,4 @@
-import { faBus, faMapMarkedAlt, faStar } from "@fortawesome/free-solid-svg-icons"
+import { faBicycle, faBiking, faBus, faMapMarkedAlt, faStar } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { Panel, PanelHeader } from "./Panel"
 
@@ -19,6 +19,20 @@ const MapLegend = () => {
         <p className="ml-3">Bus stop</p>
       </div>
       <div className="flex items-center bg-gray-100 p-3 border-b-2">
+        <div className="bg-red-500 bg-opacity-50 w-8 h-8 border-2 border-black flex items-center justify-around rounded-full">
+          <FontAwesomeIcon icon={faBiking} />
+        </div>
+        <p className="ml-3">MoGo station</p>
+      </div>
+      <div className="flex items-center bg-gray-100 p-3 border-b-2">
+        <div className="w-8 flex items-center justify-around">
+
+        <div className="w-4 h-4 border-2 border-black flex items-center justify-around rounded-full" style={{backgroundColor: "rgba(36, 171, 242, 0.65)"}}>
+        </div>
+        </div>
+        <p className="ml-3">Scooter</p>
+      </div>
+      {/* <div className="flex items-center bg-gray-100 p-3 border-b-2">
       <svg viewBox="0 0 50 50" width={32} height={32} xmlns="http://www.w3.org/2000/svg">
               <defs></defs>
               <polygon
@@ -42,7 +56,7 @@ const MapLegend = () => {
               <rect x="20.5" y="6.042" width="1.5" height="12" style={{ fill: `rgb(62, 107, 171)` }}></rect>
               <rect x="28" y="5.925" width="1.5" height="12" style={{ fill: `rgb(62, 107, 171)` }}></rect>
             </svg>
-        <p className="ml-3">Detroit People Mover <span className="font-bold">(not in service)</span></p>
+        <p className="ml-3">People Mover <span className="font-bold">(not in service)</span></p>
       </div>
       <div className="flex items-center bg-gray-100 p-3 border-b-2">
       <svg width={32} height={32}>
@@ -59,7 +73,7 @@ const MapLegend = () => {
                 ></rect>
             </svg>
         <p className="ml-3">QLine streetcar <span className="font-bold">(not in service)</span></p>
-      </div>
+      </div> */}
     </Panel>
   )
 }

@@ -35,7 +35,7 @@ const Weather = ({ center }) => {
     <Panel width='full'>
       <PanelHeader icon={faThermometerEmpty} title='Weather' />
       {weather &&
-      <div className="bg-gray-100 p-4 flex items-center justify-between">
+      <div className="bg-gray-100 p-4">
         <div>
           <span className="text-3xl font-bold">
             {`${Math.ceil(weather.currently.temperature)}`}&#176;
@@ -44,7 +44,7 @@ const Weather = ({ center }) => {
             {`${weather.currently.summary.toLowerCase()}`}
           </p>
         </div>
-        <p className="w-1/2 text-right ">
+        <p className="text-left text-sm mt-2">
           {weather.hourly.summary}
         </p>
       </div>
@@ -53,11 +53,11 @@ const Weather = ({ center }) => {
     <Panel width='full'>
       <PanelHeader icon={faClock} title='Date and time' />
       <div className="bg-gray-100 p-4">
+        <p className="text-3xl font-extrabold mb-1">
+          {dayjs(date).format("h:mm:ss a")}
+        </p>
         <p className="text-2xl font-thin mb-1">
           {dayjs(date).format("dddd, MMMM D")}
-        </p>
-        <p className="text-3xl font-extrabold">
-          {dayjs(date).format("h:mm:ss a")}
         </p>
       </div>
     </Panel>

@@ -10,8 +10,8 @@ const routes = {
     title: "Michigan",
     north: "",
     south: "",
-    east: "",
-    west: ""
+    east: "Rosa Parks TC",
+    west: "Fairlane TC"
   },
   3: {
     title: "Grand River",
@@ -112,11 +112,11 @@ const routes = {
     west: ""
   },
   18: {
-    title: "",
+    title: "Fenkell",
     north: "",
     south: "",
-    east: "",
-    west: ""
+    east: "Rosa Parks TC",
+    west: "Telegraph"
   },
   19: {
     title: "",
@@ -147,9 +147,9 @@ const routes = {
     west: ""
   },
   29: {
-    title: "",
-    north: "",
-    south: "",
+    title: "Linwood",
+    north: "UD Mercy",
+    south: "Rosa Parks TC",
     east: "",
     west: ""
   },

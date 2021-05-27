@@ -1,0 +1,98 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "id": "main",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.0710846,42.3290018
+        ]
+      },
+      "properties": {
+        "short": "Roosevelt Park",
+        "long": "Michigan Avenue & 14th Street",
+        "zoom": 15.25,
+        "bearing": 0,
+        "center": [-83.0728913,42.3308196],
+        "mogo": [2, 50]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "you-are-here",
+      "geometry": { "type": "Point", "coordinates": [-83.0767070,42.3312111] }
+    },
+    {
+      "type": "Feature",
+      "id": "bus-stop-mich-14th-wb",
+      "geometry": { "type": "Point", "coordinates": [-83.0772829,42.3313551] },
+      "properties": {
+        "title": "Michigan & 14th",
+        "ddot": [1490, 1489],
+        "smart": [],
+        "exclude": [],
+        "anchor": "right",
+        "justify": "right",
+        "offset": [-1.1, 0]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "bus-stop-bagley-wabash",
+      "geometry": { "type": "Point", "coordinates": [-83.0725673,42.3271074] },
+      "properties": {
+        "title": "Wabash & Bagley",
+        "ddot": [7937, 7938],
+        "smart": [],
+        "exclude": [],
+        "anchor": "top",
+        "justify": "center",
+        "offset": [0, 1]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "bus-stop-mich-trumbull",
+      "geometry": { "type": "Point", "coordinates": [-83.0669427,42.3314271] },
+      "properties": {
+        "title": "Michigan & Trumbull",
+        "ddot": [470, 474],
+        "smart": [230, 264],
+        "exclude": [],
+        "anchor": "top",
+        "justify": "center",
+        "offset": [0, 1]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "bus-stop-vernor-fourteenth",
+      "geometry": { "type": "Point", "coordinates": [-83.0749206,42.3320885] },
+      "properties": {
+        "title": "Vernor Hwy & 14th",
+        "ddot": [7939],
+        "smart": [],
+        "exclude": [],
+        "anchor": "left",
+        "justify": "left",
+        "offset": [1.1, 0]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "bus-stop-rosaparks-pine",
+      "geometry": { "type": "Point", "coordinates": [-83.0734402,42.3341134] },
+      "properties": {
+        "title": "Rosa Parks & Pine",
+        "ddot": [272],
+        "smart": [],
+        "exclude": [],
+        "anchor": "top",
+        "justify": "center",
+        "offset": [0, 1]
+      }
+    }
+  ]
+}

@@ -47,18 +47,24 @@ const BusStop = ({ stop }) => {
       });
   }, [stop.properties])
 
-  let grouped = _.groupBy(next, t => t.routeName)
-  let keys = Object.keys(grouped).filter(r => stop.properties.exclude.indexOf(parseInt(r)) === -1 && r !== "Exclude");
+  let grouped = _.groupBy(next, t => `${t.routeName}_${t.routeDir}`)
+  console.log(grouped)
+  let keys = Object.keys(grouped)
+  let unexcluded = keys.filter(r => stop.properties.exclude.indexOf(parseInt(r.split('_')[0])) === -1 && r !== "Exclude");
+
   return (
     <Panel>
-      <PanelHeader title={stop.properties.title} icon={faBus} />
+      <PanelHeader title={stop.properties.title} subtitle={stop.properties.subtitle} icon={faBus} />
       <div className="grid gap-2">
         {next.length > 0 && keys.map(rt => {
-          let bus = grouped[rt][0]
+          console.log(rt)
+          let fullrt = rt
+          rt = rt.split('_')[0]
+          let bus = grouped[fullrt][0]
           return (
             <div key={rt} className="bg-gray-100 px-3 py-2">
-              <div className="flex items-center justify-between">
-                <div className="flex items-center w-1/6">
+              <div className="flex items-center justify-around">
+                <div className="flex items-center justify-around">
                   <div
                     className={
                       bus.agency === "DDOT" ?
@@ -69,7 +75,7 @@ const BusStop = ({ stop }) => {
                     {bus.routeName}
                   </div>
                 </div>
-                <div className="w-3/4">
+                <div className="w-4/5">
                   <p className="font-semibold">{routes[rt].title}</p>
                   <p className="text-sm text-gray-600 leading-tight">{bus.routeDir.replace("bound", "")} to {routes[rt][bus.routeDir.replace("bound", "")]}</p>
                 </div>
@@ -79,13 +85,21 @@ const BusStop = ({ stop }) => {
                   alt={`${bus.agency} logo`}
                 />
               </div>
-              <div className="flex items-center justify-between mt-1">
+              <div className="flex items-center justify-between mt-1 mx-1">
                 <p className="font-semibold">in {bus.minsAway} min</p>
                 <p>{bus.displayArrivalTime}</p>
               </div>
             </div>
           )
         })}
+        {keys.length === 0 && (
+            <div className="bg-gray-100">
+              <p className="p-4 text-sm">
+                No buses are currently predicted to arrive at this stop.
+              </p>
+            </div>
+          )
+        }
       </div>
 
     </Panel>

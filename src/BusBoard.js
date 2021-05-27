@@ -1,4 +1,4 @@
-import { faCog } from "@fortawesome/free-solid-svg-icons";
+import { faBicycle, faBolt, faCog, faSignInAlt } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from "react-router-dom";
 import BusStop from "./BusStop";
@@ -27,14 +27,31 @@ const AreaTitle = ({ title, children }) => (
 )
 
 const AreaSubtitle = ({ subtitle, children }) => (
-  <h2 className="text-base pt-1">    
+  <h2 className="text-lg pt-1 mb-2">    
     {children}
   </h2>
 )
 
-const BusBoard = ({ stops, locationOptions, features }) => {
+const BusBoard = ({ stops, locationOptions, features, stationInfo }) => {
 
   let { short, long, mogo, zoom, bearing, center } = locationOptions;
+
+  console.log(mogo, stationInfo)
+
+  let mogoFeatures = stationInfo.filter(s => mogo.indexOf(parseInt(s.station_id)) > -1).map(m => {
+    return {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [m.lon, m.lat]
+      },
+      "properties": {
+        "name": m.name
+      }
+    }
+  })
+
+  console.log(mogoFeatures)
 
   return (
     <div className="App">
@@ -42,19 +59,22 @@ const BusBoard = ({ stops, locationOptions, features }) => {
       <GridArea gridArea="l">
         <AreaTitle>
           {short}
-          <Link to={`/configure`}>
+          {/* <Link to={`/configure`}>
             <FontAwesomeIcon icon={faCog} className="text-gray-300" />
-          </Link>
+          </Link> */}
         </AreaTitle>
         <AreaSubtitle>
           {long}
         </AreaSubtitle>
-        <Weather {...{center}} />
-        <MapLegend />
+        <div className="grid gap-2">
+
+          <Weather {...{center}} />
+          <MapLegend />
+        </div>
       </GridArea>
 
       <GridArea gridArea='h'>
-        <Map {...{zoom, bearing, center, features, stops}}/>
+        <Map {...{zoom, bearing, center, features, stops, mogoFeatures}}/>
       </GridArea>
 
       <GridArea gridArea='b'>
@@ -64,7 +84,7 @@ const BusBoard = ({ stops, locationOptions, features }) => {
         <AreaSubtitle>
           Purchase a fare on your phone through the DART app
         </AreaSubtitle>
-        <div className="flex flex-col flex-wrap h-4/5">
+        <div className="flex flex-col flex-wrapbus">
           {stops.map(stop => {
             return (
               <BusStop key={stop.id} {...{stop}} />
@@ -78,9 +98,16 @@ const BusBoard = ({ stops, locationOptions, features }) => {
           MoGo bike sharing stations
         </AreaTitle>
         <AreaSubtitle>
-          Rent MoGo bicycles through the Transit app
+        Rent MoGo bicycles through the Transit app.
         </AreaSubtitle>
-        <MoGo stations={mogo} />
+        {/* <div className="text-gray-700 text-base my-1">
+           Showing available bikes
+           <FontAwesomeIcon icon={faBicycle} className="mx-2" />
+          , available e-bikes
+          <FontAwesomeIcon icon={faBolt} className="mx-2" />
+          and available docks <FontAwesomeIcon icon={faSignInAlt} className="mx-1" /> for each station.
+        </div> */}
+        <MoGo stations={mogo} stationInfo={stationInfo} />
       </GridArea>
 
     </div>
