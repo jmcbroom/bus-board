@@ -8,6 +8,14 @@ const MoGo = ({ stations, stationInfo }) => {
   // MoGo station information
   const [stationStatus, setStationStatus] = useState(null);
 
+  const [tick, setTick] = useState(new Date());
+  useEffect(() => {
+    let tick = setInterval(() => {
+      setTick(new Date());
+    }, 60000);
+    return () => clearInterval(tick);
+  }, []);
+
   useEffect(() => {
     const url = `https://det.publicbikesystem.net/ube/gbfs/v1/en/station_status`;
     fetch(url)
@@ -15,7 +23,7 @@ const MoGo = ({ stations, stationInfo }) => {
       .then(d => {
         setStationStatus(d.data.stations);
       });
-  }, []);
+  }, [tick]);
 
   return (
     <div className="grid grid-cols-3 gap-2 ">

@@ -32,6 +32,14 @@ const BusStop = ({ stop }) => {
 
   let [next, setNext] = useState([])
 
+  const [tick, setTick] = useState(new Date());
+  useEffect(() => {
+    let tick = setInterval(() => {
+      setTick(new Date());
+    }, 15000);
+    return () => clearInterval(tick);
+  }, []);
+
   useEffect(() => {
     const smartUrls = stop.properties.smart.map(s => `/.netlify/functions/stop?stopId=${s}&provider=smart`);
     const ddotUrls = stop.properties.ddot.map(s => `/.netlify/functions/stop?stopId=${s}&provider=ddot`);
@@ -45,7 +53,7 @@ const BusStop = ({ stop }) => {
         setNext(p)
         console.log(p)
       });
-  }, [stop.properties])
+  }, [stop.properties, tick])
 
   let grouped = _.groupBy(next, t => `${t.routeName}_${t.routeDir}`)
   console.log(grouped)
@@ -62,7 +70,7 @@ const BusStop = ({ stop }) => {
           rt = rt.split('_')[0]
           let bus = grouped[fullrt][0]
           return (
-            <div key={rt} className="bg-gray-100 px-3 py-2">
+            <div key={fullrt} className="bg-gray-100 px-3 py-2">
               <div className="flex items-center justify-around">
                 <div className="flex items-center justify-around">
                   <div
