@@ -75,9 +75,7 @@ const BusStopConfigure = ({ stop, stops, setStops, setStopSlugs }) => {
 
 const Configure = ({ locationOptions, setLocationOptions, stops, setStops }) => {
 
-
   useEffect(() => {
-    console.log(stops)
   }, [stops])
 
   let [stopSlugs, setStopSlugs] = useState(Object.keys(stops))

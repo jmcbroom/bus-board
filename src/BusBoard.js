@@ -36,8 +36,6 @@ const BusBoard = ({ stops, locationOptions, features, stationInfo }) => {
 
   let { short, long, mogo, zoom, bearing, center } = locationOptions;
 
-  console.log(mogo, stationInfo)
-
   let mogoFeatures = stationInfo.filter(s => mogo.indexOf(parseInt(s.station_id)) > -1).map(m => {
     return {
       "type": "Feature",
@@ -50,8 +48,6 @@ const BusBoard = ({ stops, locationOptions, features, stationInfo }) => {
       }
     }
   })
-
-  console.log(mogoFeatures)
 
   return (
     <div className="App">

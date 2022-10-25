@@ -1,0 +1,157 @@
+{
+    "type": "FeatureCollection",
+    "features": [
+      {
+        "type": "Feature",
+        "id": "main",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -83.14525795132148,
+            42.48344711662364
+          ]
+        },
+        "properties": {
+          "short": "Downtown Royal Oak",
+          "long": "Washington & Main between 10 Mile and 11 Mile",
+          "zoom": 14.5,
+          "bearing": 270,
+          "center": [
+            -83.14525795132148,
+            42.48344711662364
+          ],
+          "mogo": [
+            70,
+            71,
+            75
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "id": "you-are-here",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -83.14584061179747,
+            42.48383816700488
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "id": "bus-stop-washington-lincoln",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -83.14643812319976,
+            42.48313656116906
+          ]
+        },
+        "properties": {
+          "title": "Washington & Lincoln",
+          "ddot": [],
+          "smart": [
+            20342,
+            20340
+          ],
+          "amtrak": [],
+          "exclude": [],
+          "anchor": "top",
+          "justify": "center",
+          "offset": [
+            0,
+            1
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "id": "bus-stop-washington-woodward",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -83.14626678886026,
+            42.47652641811486
+          ]
+        },
+        "properties": {
+          "title": "Washington & Woodward",
+          "ddot": [],
+          "smart": [
+            11647,
+            23880,
+            23406
+          ],
+          "amtrak": [],
+          "exclude": [
+            460,
+            730,
+            740
+          ],
+          "anchor": "top",
+          "justify": "center",
+          "offset": [
+            0,
+            1
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "id": "bus-stop-royal-oak-tc",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -83.14765093517079,
+            42.488510844590635
+          ]
+        },
+        "properties": {
+          "title": "Royal Oak Transit Center",
+          "ddot": [],
+          "smart": [
+            23626,
+            1643
+          ],
+          "amtrak": [],
+          "exclude": [
+            460,
+            730
+          ],
+          "anchor": "left",
+          "justify": "left",
+          "offset": [
+            1.1,
+            0
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "id": "train-station-royal-oak",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -83.14754901122457,
+            42.48919914834271
+          ]
+        },
+        "properties": {
+          "title": "Royal Oak Amtrak",
+          "ddot": [],
+          "smart": [],
+          "amtrak": [
+            "ROY"
+          ],
+          "exclude": [],
+          "anchor": "top",
+          "justify": "center",
+          "offset": [
+            0,
+            1
+          ]
+        }
+      }
+    ]
+  }

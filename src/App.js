@@ -3,11 +3,12 @@ import './App.css';
 import BusBoard from './BusBoard';
 import Configure from './Configure';
 import React, {useState, useEffect} from 'react';
-import caymc from './locations/roosevelt.json'
+import caymc from './locations/caymc.json'
 
 function App() {
 
   const [locationOptions, setLocationOptions] = useState(caymc.features[0].properties)
+  const [youAreHere, setYouAreHere] = useState(caymc.features.filter(f => f.id === 'you-are-here'))
   const [stops, setStops] = useState(caymc.features.filter(f => f.id.indexOf('bus-stop') > -1))
   const [features, setFeatures] = useState(caymc.features.filter(f => f.id.indexOf('bus-stop') === -1))
   const [stationInfo, setStationInfo] = useState(null)
@@ -17,7 +18,6 @@ function App() {
     fetch(url)
       .then(r => r.json())
       .then(d => {
-        console.log(d.data.stations)
         setStationInfo(d.data.stations);
       });
   }, []);

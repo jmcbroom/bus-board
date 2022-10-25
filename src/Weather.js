@@ -20,13 +20,7 @@ const Weather = ({ center }) => {
     fetch(`/.netlify/functions/darksky?lon=${center[0]}&lat=${center[1]}`)
       .then(r => r.json())
       .then(d => {
-        console.log(d);
         setWeather(d);
-        console.log(
-          _.upperCase(d.currently.icon)
-            .replace("-", "_")
-            .replace(" ", "_")
-        );
       });
   }, []);
 
